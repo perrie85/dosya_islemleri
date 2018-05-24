@@ -1,0 +1,13 @@
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\bin\Debug\doysa_işlemler.exe.config
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\bin\Debug\doysa_işlemler.exe
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\bin\Debug\doysa_işlemler.pdb
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.csprojResolveAssemblyReference.cache
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.Form1.resources
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.Properties.Resources.resources
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.csproj.GenerateResource.cache
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.exe
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.pdb
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.AnaForm.resources
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.Form2.resources
+C:\Users\user\source\repos\doysa_işlemler\doysa_işlemler\obj\Debug\doysa_işlemler.Form3.resources
