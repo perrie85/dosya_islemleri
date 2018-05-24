@@ -12,7 +12,8 @@ namespace doysa_işlemler
         private string telCep1;
         private string telIş;
         private string telCep2;
-
+        // burada ise property kullanarak sınıfı kullandım
+        // bu sınıfla alakalı tüm fonksiyonlarda da get set fonksiyonlarını göreceksiniz
         public string TelEv
         {
             set { telEv = value; }

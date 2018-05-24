@@ -1,0 +1,3 @@
+﻿ad | soyad | dogum_tarihi | meslek | cinsiyet | medeni_durum | maas 
+furkan,çelik,1997,8,9,bilgisayar mühendisi,Erkek,Bekar,5000,1111111,2222222,3333333,4444444
+saadet,göçmen,1997,1,7,bilgisayar mühendisi,Kadın,Bekar,3000,5,6,yok,yok

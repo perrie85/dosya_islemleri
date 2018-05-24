@@ -21,7 +21,6 @@ namespace doysa_işlemler
             form1.Hide();
         }
 
-
         protected override void OnClosed(EventArgs e)
         {
             form1.Close();

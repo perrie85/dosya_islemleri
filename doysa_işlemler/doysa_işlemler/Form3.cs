@@ -26,8 +26,14 @@ namespace doysa_işlemler
             {
                 if (personels[i].ad==ad)
                 {
-                    MessageBox.Show(personels[i].ad + "," + personels[i].soyad + "," + personels[i].doğumTarihi.Year + "," + personels[i].doğumTarihi.Month + "," + personels[i].doğumTarihi.Day 
-                            + "," + personels[i].meslek + ","+ personels[i].cinsiyet + "," + personels[i].medeniDurum + "," + personels[i].maas);
+                    Personel personel = personels[i];
+                    MessageBox.Show(personels[i].ad + "," + personels[i].soyad + "," + personels[i].doğumTarihi.Year + ","
+                                    +personels[i].doğumTarihi.Month + "," + personels[i].doğumTarihi.Day 
+                                    + "," + personels[i].meslek + ","+ personels[i].cinsiyet + "," + personels[i].medeniDurum + "," + personels[i].maas);
+                    Form2 form2 = new Form2(personel);
+                    form2.MdiParent = MdiParent;
+                    form2.Show();
+                    this.Hide();
                     break;
                 }
                 

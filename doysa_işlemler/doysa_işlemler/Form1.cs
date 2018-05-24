@@ -43,15 +43,18 @@ namespace doysa_işlemler
                 else
                 {
                     satır = oku.ReadLine();
+                    if (satır == null)
+                    {
+                        MessageBox.Show("yanlış kullanıcı adı şifre");
+                        break;
+                    }
                     degiskenler = satır.Split(',');
+                    
                 }
 
-                /*if ((satır = oku.ReadLine()) == null)
-                {
-                    MessageBox.Show("yanlış kullanıcı adı şifre");
-                }*/
+                
             }
-            
+            oku.Close();
         }
     }
 }

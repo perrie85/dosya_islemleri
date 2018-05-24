@@ -19,7 +19,7 @@ namespace doysa_işlemler
         public string medeniDurum;
         public DateTime doğumTarihi;
         public int maas;
-        //public Ajanda telefonlar;
+        public Ajanda telefonlar;
         //enumlar
         enum MedeniDurum { Evli, Bekar }
         enum Cinsiyet { Kadın, Erkek }
@@ -29,17 +29,17 @@ namespace doysa_işlemler
             this.ad = ad;
             this.soyad = soyad;
         }
-
+        
         public Personel(string ad, string soyad,
                         DateTime doğumTarihi, string meslek, string cinsiyet, 
-                        string medeniDurum, int maas/* Ajanda telefonlar*/) : this(ad,soyad)
+                        string medeniDurum, int maas,Ajanda telefonlar) : this(ad,soyad)
         {
             this.meslek = meslek;
             this.cinsiyet = cinsiyet;
             this.medeniDurum = medeniDurum;
             this.doğumTarihi = doğumTarihi;
             this.maas = maas;
-            //this.telefonlar = telefonlar;  AJANDA DÜZENLEMESİNDEN SONRA EKLENECEK
+            this.telefonlar = telefonlar;
         }
 
         //yas icin datetime getteri
@@ -47,6 +47,14 @@ namespace doysa_işlemler
         {
             get { return DateTime.Now.Year - doğumTarihi.Year; }
         }
+        //ilerideki fonksiyonları vb daha öncesinde constructor ile yazmış olduğumdan ötürü
+        //bu propertyleri hiç kullanmadım, constructorlar işimi tamamen gördü
+        public string Meslek { get => meslek; set => meslek = value; }
+        public string Cinsiyet1 { get => cinsiyet; set => cinsiyet = value; }
+        public string MedeniDurum1 { get => medeniDurum; set => medeniDurum = value; }
+        public DateTime DoğumTarihi { get => doğumTarihi; set => doğumTarihi = value; }
+        public int Maas { get => maas; set => maas = value; }
+
         //zamyap fonksiyonu
         public void ZamYap(int oran)
         {
@@ -66,23 +74,23 @@ namespace doysa_işlemler
             StreamReader oku = new StreamReader(fs);
             string satır = oku.ReadLine();
             
-            while (oku != null)
+            while (true)
             {
                 satır = oku.ReadLine();
-                if (satır==null)
-                {
+                if (satır==null)//satır boş olduğu zaman değişkenler fonksiyonunda out of bounds uyarısı verdiğinden ötürü bu 
+                {               //kontrolü kullandım
                     break;
                 }
                 string[] degiskenler = satır.Split(',');
                 DateTime date = new DateTime(Convert.ToInt32(degiskenler[2]), Convert.ToInt32(degiskenler[3]), Convert.ToInt32(degiskenler[4]));
-                /*Ajanda telefonlar = new Ajanda();
-                telefonlar.TelEv = degiskenler[7];
-                telefonlar.TelCep1 = degiskenler[8];
+                Ajanda telefonlar = new Ajanda();
                 telefonlar.TelEv = degiskenler[9];
-                telefonlar.TelEv = degiskenler[10];*/
+                telefonlar.TelCep1 = degiskenler[10];
+                telefonlar.TelIş = degiskenler[11];
+                telefonlar.TelCep2 = degiskenler[12];
                 Personel kayıtE = new Personel(degiskenler[0], degiskenler[1], date,
                                                degiskenler[5], degiskenler[6], degiskenler[7],
-                                               Convert.ToInt32(degiskenler[8]));
+                                               Convert.ToInt32(degiskenler[8]),telefonlar);
 
                 
                 kayıt.Add(kayıtE);
@@ -102,53 +110,12 @@ namespace doysa_işlemler
             StreamWriter yazıcı = new StreamWriter(fs);
 
             yazıcı.WriteLine(personel.ad + "," + personel.soyad + "," + personel.doğumTarihi.Year+","+ personel.doğumTarihi.Month + "," +personel.doğumTarihi.Day+ ","+ personel.meslek + ","
-                             + personel.cinsiyet + "," + personel.medeniDurum + "," + personel.maas);
-
-            //YazıcıKontrol(personel, yazıcı);
+                             + personel.cinsiyet + "," + personel.medeniDurum + "," + personel.maas+","
+                             +personel.telefonlar.TelEv+","+personel.telefonlar.TelCep1+","+personel.telefonlar.TelIş+","+personel.telefonlar.TelCep2);
 
             yazıcı.Flush();
-
             yazıcı.Close();
-
             fs.Close();
         }
-
-        /*public static void YazıcıKontrol(Personel personel,StreamWriter yazıcı)
-        {
-            if (personel.telefonlar.TelIş==null)
-            {
-                if (personel.telefonlar.TelCep2 == null)
-                {
-                    yazıcı.WriteLine(personel.ad + "," + personel.soyad + "," + personel.meslek + "," + personel.cinsiyet + ","
-                            + personel.medeniDurum + "," + personel.doğumTarihi + "," + personel.maas +
-                            "," + personel.telefonlar.TelEv + "," + personel.telefonlar.TelCep1);
-                }
-                else
-                {
-                    yazıcı.WriteLine(personel.ad + "," + personel.soyad + "," + personel.meslek + "," + personel.cinsiyet + ","
-                        + personel.medeniDurum + "," + personel.doğumTarihi + "," + personel.maas +
-                        "," + personel.telefonlar.TelEv + "," + personel.telefonlar.TelCep1 +
-                        "," + personel.telefonlar.TelCep2);
-                }
-            }
-            else
-            {
-                if (personel.telefonlar.TelCep2 == null)
-                {
-                    yazıcı.WriteLine(personel.ad + "," + personel.soyad + "," + personel.meslek + "," + personel.cinsiyet + ","
-                            + personel.medeniDurum + "," + personel.doğumTarihi + "," + personel.maas +
-                            "," + personel.telefonlar.TelEv + "," + personel.telefonlar.TelCep1 +
-                             "," + personel.telefonlar.TelIş);
-                }
-                else
-                {
-                    yazıcı.WriteLine(personel.ad + "," + personel.soyad + "," + personel.meslek + "," + personel.cinsiyet + ","
-                             + personel.medeniDurum + "," + personel.doğumTarihi + "," + personel.maas +
-                             "," + personel.telefonlar.TelEv + "," + personel.telefonlar.TelCep1 +
-                             "," + personel.telefonlar.TelIş + "," + personel.telefonlar.TelCep2);
-                }
-            }
-        }*/
-
     }
 }
